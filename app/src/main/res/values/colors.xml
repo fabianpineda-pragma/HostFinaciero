@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- La misma paleta del módulo Flutter, para que la transición entre las
+         dos pantallas no se sienta como entrar a otra app. -->
+    <color name="azul_financiero">#0B2B5B</color>
+    <color name="azul_claro">#1C5FD6</color>
+    <color name="verde_exito">#0E9F6E</color>
+    <color name="fondo">#F4F6FA</color>
+    <color name="texto_principal">#1F2933</color>
+    <color name="texto_secundario">#6B7785</color>
+</resources>

@@ -1,0 +1,35 @@
+R_DEF: Internal format may change without notice
+local
+color azul_claro
+color azul_financiero
+color fondo
+color texto_principal
+color texto_secundario
+color verde_exito
+id botonAbrir
+id botonLimpiar
+id contenedorMonto
+id contenedorTasa
+id inputMoneda
+id inputMonto
+id inputTasa
+id selectorPlazo
+id textoPayload
+layout activity_main
+string app_name
+string aviso_payload
+string boton_abrir
+string boton_limpiar
+string error_monto
+string error_tasa
+string label_moneda
+string label_monto
+string label_plazo
+string label_tasa
+string nota_sin_conectar
+string seccion_formulario
+string subtitulo
+string sufijo_meses
+string titulo
+string titulo_payload
+style Theme.HostFinanciero

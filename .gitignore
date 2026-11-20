@@ -1,0 +1,27 @@
+# Compilados
+build/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# Gradle: la caché local, no el wrapper.
+# gradle/wrapper/gradle-wrapper.jar SÍ se versiona: sin él no se puede compilar.
+.gradle/
+local.properties
+
+# Android Studio / IntelliJ
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# macOS
+.DS_Store
+
+# Logs y llaves
+*.log
+*.jks
+*.keystore

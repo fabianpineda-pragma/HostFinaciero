@@ -7,7 +7,7 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    // Valor por defecto de Android Studio. El paso 4 de la integración lo
+    // Valor por defecto de Android Studio. El paso A2 de la parte práctica lo
     // cambia a PREFER_SETTINGS y agrega el repo del engine de Flutter.
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {

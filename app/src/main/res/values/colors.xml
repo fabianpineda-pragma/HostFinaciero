@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- La misma paleta del módulo Flutter, para que la transición entre las
-         dos pantallas no se sienta como entrar a otra app. -->
-    <color name="azul_financiero">#0B2B5B</color>
-    <color name="azul_claro">#1C5FD6</color>
-    <color name="verde_exito">#0E9F6E</color>
-    <color name="fondo">#F4F6FA</color>
-    <color name="texto_principal">#1F2933</color>
-    <color name="texto_secundario">#6B7785</color>
+    <!-- Paleta Pragma, compartida con el módulo Flutter y la app iOS. -->
+    <color name="primario">#6429CD</color>          <!-- Morado 1 -->
+    <color name="primario_oscuro">#440099</color>   <!-- Morado 2 -->
+    <color name="primario_profundo">#330072</color> <!-- Morado 3 -->
+    <color name="primario_suave">#E0E6FF</color>    <!-- Azul claro 1 -->
+    <color name="acento">#E4A4FF</color>            <!-- rosa Pragma -->
+
+    <color name="fondo">#F6F7FD</color>             <!-- Azul claro 2 -->
+    <color name="superficie">#FFFFFF</color>
+    <color name="borde">#E2E6F0</color>             <!-- Gris 1 -->
+    <color name="texto_principal">#1D1D1B</color>
+    <color name="texto_secundario">#5F6475</color>
+    <color name="error">#D64545</color>
+
+    <!-- Banner de plataforma (colores de la marca Android). -->
+    <color name="banner_fondo">#073042</color>
+    <color name="banner_acento">#3DDC84</color>
+    <color name="banner_secundario">#A8BCC6</color>
 </resources>

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.HostFinanciero" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/azul_financiero</item>
+    <style name="Theme.HostFinanciero" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/primario</item>
         <item name="colorOnPrimary">@android:color/white</item>
-        <item name="android:statusBarColor">@color/azul_financiero</item>
+        <!-- La app dibuja de borde a borde: barras transparentes, iconos claros
+             sobre el banner oscuro e iconos oscuros sobre el fondo claro. -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
     </style>
 
 </resources>

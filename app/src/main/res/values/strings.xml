@@ -3,26 +3,34 @@
     <string name="app_name">Mi Banco</string>
 
     <string name="titulo">Mi Banco</string>
-    <string name="subtitulo">Datos del crédito que recibirá el simulador</string>
+    <string name="subtitulo">Solicita tu crédito y simúlalo antes de confirmar</string>
 
     <string name="seccion_formulario">Solicitud de crédito</string>
-    <string name="label_monto">Monto del préstamo (COP)</string>
-    <string name="label_tasa">Tasa de interés mensual (%)</string>
+    <string name="seccion_subtitulo">Los datos que recibirá el simulador</string>
+    <string name="ayuda_monto">Entre $500 K y $100 M</string>
+    <string name="ayuda_tasa">Tasa mensual, no anual</string>
+    <string name="sufijo_tasa">% mensual</string>
+    <string name="label_monto">Monto del préstamo</string>
+    <string name="label_tasa">Tasa de interés</string>
     <string name="label_plazo">Plazo del crédito</string>
     <string name="label_moneda">Moneda</string>
     <string name="sufijo_meses">meses</string>
+    <string name="valor_plazo">%1$d meses</string>
 
     <string name="boton_abrir">Abrir simulador</string>
     <string name="boton_limpiar">Restablecer</string>
 
     <string name="titulo_payload">Datos que se enviarán por el canal</string>
     <string name="nota_sin_conectar">
-        El módulo Flutter todavía no está conectado. Al tocar el botón, la app
-        solo arma los parámetros y los muestra aquí. Conectarlo es el paso 4 y
-        el paso 5 de la integración.
+        Esta app todavía no incluye el simulador. Por ahora el botón solo valida
+        el formulario; el simulador Flutter se conecta con add-to-app en los
+        pasos A1 a A6 de la parte práctica.
     </string>
+
+    <string name="banner_plataforma">Android Nativo</string>
+    <string name="banner_tecnologia">Kotlin · Views</string>
 
     <string name="error_monto">Escribe un monto entre $500.000 y $100.000.000</string>
     <string name="error_tasa">Escribe una tasa entre 0 % y 10 %</string>
-    <string name="aviso_payload">Parámetros listos para el simulador</string>
+    <string name="aviso_payload">Parámetros listos. El simulador se conecta en la parte práctica.</string>
 </resources>

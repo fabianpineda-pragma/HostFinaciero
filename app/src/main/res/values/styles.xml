@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Componentes compartidos con el simulador Flutter: mismos radios,
+         alturas y colores. -->
+    <style name="CampoPragma" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/fondo</item>
+        <item name="boxStrokeColor">@color/campo_borde</item>
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
+        <item name="hintEnabled">false</item>
+        <item name="prefixTextColor">@color/texto_secundario</item>
+        <item name="suffixTextColor">@color/texto_secundario</item>
+        <item name="helperTextTextColor">@color/texto_secundario</item>
+        <item name="errorTextColor">@color/error</item>
+        <item name="boxStrokeErrorColor">@color/error</item>
+    </style>
+
+    <style name="TextoCampoPragma">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/texto_principal</item>
+    </style>
+
+    <style name="DivisorPragma">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:background">@color/borde</item>
+    </style>
+
+    <style name="BotonPrimarioPragma" parent="Widget.Material3.Button">
+        <item name="android:minHeight">52dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="backgroundTint">@color/primario</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="cornerRadius">14dp</item>
+    </style>
+
+    <style name="BotonSecundarioPragma" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">52dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primario</item>
+        <item name="strokeColor">@color/borde</item>
+        <item name="cornerRadius">14dp</item>
+    </style>
+
+    <style name="ChipPlazoPragma" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_fondo</item>
+        <item name="chipStrokeColor">@color/chip_borde</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipCornerRadius">14dp</item>
+        <item name="chipMinHeight">44dp</item>
+        <item name="android:textAppearance">@style/TextoChipPragma</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipStartPadding">10dp</item>
+        <item name="chipEndPadding">10dp</item>
+    </style>
+
+    <style name="TextoChipPragma" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textSize">14.5sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/chip_texto</item>
+    </style>
+</resources>

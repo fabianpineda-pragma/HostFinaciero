@@ -25,3 +25,6 @@ captures/
 *.log
 *.jks
 *.keystore
+
+# Kotlin 2.x
+.kotlin/

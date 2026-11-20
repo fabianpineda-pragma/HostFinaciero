@@ -11,7 +11,7 @@
             Aquí falta todavía:
             · android:name=".HostFinancieroApp" para precalentar el engine
             · el <activity> de io.flutter.embedding.android.FlutterActivity
-            Los dos los agrega el paso 5 de la integración, a mano.
+            Los agregan los pasos A4 y A5 de la parte práctica, a mano.
         -->
 
         <activity

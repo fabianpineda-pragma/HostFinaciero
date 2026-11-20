@@ -25,8 +25,8 @@ android {
         }
     }
 
-    // Java 11 es lo que genera Android Studio. El paso 3 de la integración
-    // lo sube a 17, que es lo que pide Flutter.
+    // Java 11 es lo que genera Android Studio. El paso A3 de la parte
+    // práctica lo sube a 17, que es lo que pide Flutter.
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11

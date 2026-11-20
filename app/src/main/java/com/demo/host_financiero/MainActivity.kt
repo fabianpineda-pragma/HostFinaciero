@@ -1,29 +1,43 @@
 package com.demo.host_financiero
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
+import androidx.core.widget.doAfterTextChanged
 import com.demo.host_financiero.databinding.ActivityMainBinding
+import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
+import java.text.NumberFormat
+import java.util.Locale
 
 /**
  * Pantalla nativa de "Mi Banco": el formulario con las condiciones del
  * crédito que más adelante recibirá el módulo Flutter.
  *
- * Hoy esta app **no conoce a Flutter**. El botón solo valida el formulario y
- * muestra los parámetros que viajarían por el canal. Conectar el módulo es
- * trabajo de los pasos 4 y 5 de la integración, y se hace a mano.
+ * Hoy esta app **no conoce a Flutter**: es una app nativa completa por sí
+ * sola. El botón valida el formulario y muestra los parámetros que viajarían
+ * por el canal. Conectar el módulo es trabajo de los pasos A1 a A6 de la
+ * parte práctica, y se hace a mano.
  */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private var plazo = PLAZO_INICIAL
+    private val miles = NumberFormat.getIntegerInstance(Locale.forLanguageTag("es-CO"))
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        aplicarBordeABorde()
 
-        configurarSelectorDePlazo()
+        configurarEtiquetas()
+        configurarPlazos()
+        actualizarAlEscribir()
 
         binding.botonAbrir.setOnClickListener { abrirSimulador() }
         binding.botonLimpiar.setOnClickListener { restablecer() }
@@ -31,14 +45,55 @@ class MainActivity : AppCompatActivity() {
         mostrarParametros(leerFormulario())
     }
 
-    private fun configurarSelectorDePlazo() {
-        val etiquetas = PLAZOS.map { "$it ${getString(R.string.sufijo_meses)}" }
-        binding.selectorPlazo.adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_dropdown_item,
-            etiquetas,
-        )
-        binding.selectorPlazo.setSelection(PLAZOS.indexOf(PLAZO_INICIAL))
+    /**
+     * Con targetSdk 35+ Android dibuja de borde a borde: el banner ocupa la
+     * zona de la barra de estado y el contenido deja libre la de navegación.
+     */
+    private fun aplicarBordeABorde() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.raiz) { _, insets ->
+            val barras = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            binding.banner.root.updatePadding(top = barras.top)
+            binding.scroll.updatePadding(bottom = barras.bottom)
+            insets
+        }
+    }
+
+    private fun configurarEtiquetas() {
+        binding.etiquetaMonto.etiqueta.setText(R.string.label_monto)
+        binding.etiquetaTasa.etiqueta.setText(R.string.label_tasa)
+        binding.etiquetaPlazo.etiqueta.setText(R.string.label_plazo)
+        binding.etiquetaMoneda.etiqueta.setText(R.string.label_moneda)
+        binding.etiquetaMoneda.valor.text = MONEDA
+    }
+
+    /** Chips de plazo, iguales a los del simulador Flutter. */
+    private fun configurarPlazos() {
+        for (meses in PLAZOS) {
+            val chip = Chip(this, null, 0).apply {
+                setChipDrawable(
+                    com.google.android.material.chip.ChipDrawable.createFromAttributes(
+                        context, null, 0, R.style.ChipPlazoPragma
+                    )
+                )
+                setTextAppearance(R.style.TextoChipPragma)
+                text = meses.toString()
+                id = meses
+                isCheckable = true
+                isChecked = meses == plazo
+            }
+            binding.grupoPlazos.addView(chip)
+        }
+        binding.grupoPlazos.setOnCheckedStateChangeListener { _, ids ->
+            plazo = ids.firstOrNull() ?: plazo
+            mostrarParametros(leerFormulario())
+        }
+    }
+
+    /** La vista previa del canal se actualiza mientras se edita el formulario. */
+    private fun actualizarAlEscribir() {
+        binding.inputMonto.doAfterTextChanged { mostrarParametros(leerFormulario()) }
+        binding.inputTasa.doAfterTextChanged { mostrarParametros(leerFormulario()) }
     }
 
     /**
@@ -66,13 +121,17 @@ class MainActivity : AppCompatActivity() {
             binding.contenedorTasa.error = null
         }
 
+        binding.etiquetaMonto.valor.text = monto?.let { "$" + miles.format(it) } ?: "—"
+        binding.etiquetaTasa.valor.text = tasa?.let { "$it% mensual" } ?: "—"
+        binding.etiquetaPlazo.valor.text = getString(R.string.valor_plazo, plazo)
+
         if (!valido) return null
 
         return ParametrosCredito(
             amount = monto!!,
             monthlyInterestRate = tasa!!,
-            termMonths = PLAZOS[binding.selectorPlazo.selectedItemPosition],
-            currency = binding.inputMoneda.text?.toString().orEmpty(),
+            termMonths = plazo,
+            currency = MONEDA,
         )
     }
 
@@ -90,14 +149,14 @@ class MainActivity : AppCompatActivity() {
             Snackbar.LENGTH_SHORT,
         ).show()
 
-        // El paso 5 de la integración reemplaza esta línea por la apertura de
-        // la pantalla Flutter con el engine precalentado.
+        // El paso A6 de la parte práctica agrega aquí el envío de los
+        // parámetros por el canal y la apertura de la pantalla Flutter.
     }
 
     private fun restablecer() {
         binding.inputMonto.setText(MONTO_INICIAL.toString())
         binding.inputTasa.setText(TASA_INICIAL.toString())
-        binding.selectorPlazo.setSelection(PLAZOS.indexOf(PLAZO_INICIAL))
+        binding.grupoPlazos.check(PLAZO_INICIAL)
         binding.contenedorMonto.error = null
         binding.contenedorTasa.error = null
         mostrarParametros(leerFormulario())
@@ -120,5 +179,6 @@ class MainActivity : AppCompatActivity() {
         const val MONTO_MINIMO = 500_000L
         const val MONTO_MAXIMO = 100_000_000L
         const val TASA_MAXIMA = 10.0
+        const val MONEDA = "COP"
     }
 }
